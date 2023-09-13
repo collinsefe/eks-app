@@ -1,5 +1,5 @@
 variable "cluster-name" {
-  default = "techbeat-eks-cluster"
+  default = "myapp-eks-cluster"
   type    = string
 }
 
