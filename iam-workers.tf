@@ -1,5 +1,5 @@
-resource "aws_iam_role" "demo-node" {
-  name = "techbeat-eks-node"
+resource "aws_iam_role" "myapp_node" {
+  name = "myapp-eks-node"
 
   assume_role_policy = <<POLICY
 {
@@ -18,28 +18,28 @@ POLICY
 
 }
 
-resource "aws_iam_role_policy_attachment" "demo-node-AmazonEKSWorkerNodePolicy" {
+resource "aws_iam_role_policy_attachment" "myapp-node-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role = aws_iam_role.demo-node.name
+  role = aws_iam_role.myapp_cluster.name
 }
 
-resource "aws_iam_role_policy_attachment" "demo-node-AmazonEKS_CNI_Policy" {
+resource "aws_iam_role_policy_attachment" "myapp-node-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role = aws_iam_role.demo-node.name
+  role = aws_iam_role.myapp_node.name
 }
 
-resource "aws_iam_role_policy_attachment" "demo-node-AmazonEC2ContainerRegistryReadOnly" {
+resource "aws_iam_role_policy_attachment" "myapp-node-AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role = aws_iam_role.demo-node.name
+  role = aws_iam_role.myapp_node.name
 }
 
 resource "aws_iam_role_policy_attachment" "demo-node-AmazonSSMManagedInstanceCore" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  role = aws_iam_role.demo-node.name
+  role = aws_iam_role.myapp_node.name
 }
 
-resource "aws_iam_instance_profile" "demo-node" {
-  name = "terraform-eks-demo"
-  role = aws_iam_role.demo-node.name
+resource "aws_iam_instance_profile" "myapp_node" {
+  name = "myapp-eks-demo"
+  role = aws_iam_role.myapp_node.name
 }
 

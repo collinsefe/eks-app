@@ -1,5 +1,5 @@
-resource "aws_iam_role" "demo-cluster" {
-  name = "techbeat-eks-cluster"
+resource "aws_iam_role" "myapp_cluster" {
+  name = "myapp-eks-cluster"
 
   assume_role_policy = <<POLICY
 {
@@ -18,20 +18,20 @@ POLICY
 
 }
 
-resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
+resource "aws_iam_role_policy_attachment" "myapp_cluster_AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role = aws_iam_role.demo-cluster.name
+  role = aws_iam_role.myapp_cluster.name
 }
 
-resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
+resource "aws_iam_role_policy_attachment" "myapp_cluster_AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role = aws_iam_role.demo-cluster.name
+  role = aws_iam_role.myapp_cluster.name
 }
 
 # If no loadbalancer was ever created in this region, then this following role is necessary
 resource "aws_iam_role_policy" "demo-cluster-service-linked-role" {
   name = "techbeat-service-linked-role"
-  role = aws_iam_role.demo-cluster.name
+  role = aws_iam_role.myapp_cluster.name
 
   policy = <<EOF
 {
