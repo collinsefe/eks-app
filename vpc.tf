@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = "techbeat-vpc"
+  name = "myapp-eks-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -13,7 +13,7 @@ module "vpc" {
   enable_vpn_gateway = false
 
   tags = {
-    "Name"                                      = "techbeat-eks-node"
+    "Name"                                      = "myapp-eks-node"
     "kubernetes.io/cluster/${var.cluster-name}" = "shared"
   }
 }
