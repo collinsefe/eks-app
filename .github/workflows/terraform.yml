@@ -77,7 +77,7 @@ jobs:
     - name: Configure AWS Credentials from Demo account
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::684361860346:role/corighose-eks-role
+        role-to-assume: arn:aws:iam::684361860346:role/GitHub-OIDC-role
         aws-region: eu-west-2
 
     - name: Display Identity
