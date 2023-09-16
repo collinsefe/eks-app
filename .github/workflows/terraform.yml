@@ -55,17 +55,14 @@ on:
 
 permissions:
   contents: read
-
+  id-token: write
       
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: demo
-
-  permissions:
-      id-token: write
-      contents: read 
+    environment: test
+      
       
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -84,7 +81,7 @@ jobs:
         aws-region: eu-west-2
 
     - name: Display Identity
-        run: aws sts get-caller-identity
+      run: aws sts get-caller-identity
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
