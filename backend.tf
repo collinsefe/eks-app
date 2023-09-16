@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket = "bucketName"
-    key    = "folderPath/eks/myapp"
+    bucket = "collinsorighose-tf-state"
+    key    = "training/eks/myapp"
     profile = "bravo"
     region = "eu-west-2"
   }
 }
+
