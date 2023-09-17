@@ -37,9 +37,9 @@ resource "aws_launch_configuration" "myapp" {
 }
 
 resource "aws_autoscaling_group" "myapp" {
-  desired_capacity = 1
+  desired_capacity = 2
   launch_configuration = aws_launch_configuration.myapp.id
-  max_size = 1
+  max_size = 2
   min_size = 1
   name = "myapp-eks-asg"
   vpc_zone_identifier = module.vpc.public_subnets
