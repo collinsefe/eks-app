@@ -1,3 +1,5 @@
+#ECS Cluster
+
 resource "aws_eks_cluster" "myapp_cluster" {
   name     = var.cluster-name
   role_arn = aws_iam_role.myapp_cluster.arn
